@@ -4,16 +4,15 @@ from sqlite3 import Cursor
 import mysql.connector
 
 
-'''
+
 date = "\"2021-03-01\""
-connection = mysql.connector.connect(host = 'localhost',
+connection = mysql.connector.connect(host = '127.0.0.1',
                                         port = '3306',
                                         user = 'root',
                                         password = 'hope0208')
 cursor = connection.cursor()
-sql = "select * from vemar_database.vemar_table_2 where Tdate Like {};".format(date)
+sql = "select * from vemar.vemar_table_2;"
 cursor.execute(sql)
-
 
 recods = cursor.fetchall()
 for r in recods:
@@ -21,7 +20,7 @@ for r in recods:
 
 cursor.close()
 connection.close()
-'''
+
 
 
 
@@ -37,16 +36,16 @@ def one_select_table(one_date:datetime,Campaign_Obj:str):
         sql = "select * from vemar_database.vemar_table_2 where Tdate Like \"{}\";".format(one_date)
     else:
         sql = "select * from vemar_database.vemar_table_2 where Tdate like \"{}\" and Campaign_Objective like \"{}\" group by Tdate ,Campaign_Objective ORDER BY tt ;".format(one_date,Campaign_Obj)
-    
+
     cursor.execute(sql)
-    
+
     tt=[]
 
 
     field_name = [des[0] for des in cursor.description]
 
     recods = cursor.fetchall()
-    
+
     tt.append(field_name)
     for r in recods:
         tt.append(r)
