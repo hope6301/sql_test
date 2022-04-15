@@ -5,13 +5,13 @@ import mysql.connector
 
 
 
-date = "\"2021-03-01\""
-connection = mysql.connector.connect(host = '127.0.0.1',
+'''
+connection = mysql.connector.connect(host = 'localhost',
                                         port = '3306',
                                         user = 'root',
                                         password = 'hope0208')
 cursor = connection.cursor()
-sql = "select * from vemar.vemar_table_2;"
+sql = "select * from vemar_database.vemar_table_2;"
 cursor.execute(sql)
 
 recods = cursor.fetchall()
@@ -20,7 +20,7 @@ for r in recods:
 
 cursor.close()
 connection.close()
-
+'''
 
 
 
@@ -49,6 +49,9 @@ def one_select_table(one_date:datetime,Campaign_Obj:str):
     tt.append(field_name)
     for r in recods:
         tt.append(r)
+
+    
+
 
     cursor.close()
     connection.close()

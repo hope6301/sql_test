@@ -4,6 +4,9 @@ import sql_data_input
 import sqlapi
 from tabulate import tabulate
 
+
+
+
 month = input("想查詢單月還雙月,單月or雙月:")
 if month == "單月":
     one_month_date = sql_data_input.one_input_date()
@@ -44,6 +47,3 @@ else:
 
 print(tabulate(re_date, headers=re_date[0]))
 
-
-
-print("變更1")
